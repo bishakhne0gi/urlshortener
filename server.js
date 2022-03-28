@@ -1,9 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const ShortUrl = require('./models/shortUrl')
+const dotEnv = require('dotenv')
 const app = express()
 
-mongoose.connect('mongodb+srv://root:znlujL7nOwm2kuM4@cluster0.hlkwr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+dotEnv.config()
+
+mongoose.connect(process.env.MongoUrl, {
   useNewUrlParser: true
 }).then(()=>{
     console.log("connected to database")
